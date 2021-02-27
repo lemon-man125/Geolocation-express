@@ -1,9 +1,11 @@
 const { response } = require('express');
 const express = require('express');
 const Ds = require('nedb');
+require('dotenv').config()
 
+const port = process.env.PORT || 1000;
 const api = express();
-api.listen(1000, () => console.log("Listening at this port"));
+api.listen(port, () => console.log("Listening at this port"));
 api.use(express.static('web'));
 api.use(express.json({limit: '2mb'}))
 
