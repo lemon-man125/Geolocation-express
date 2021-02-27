@@ -5,7 +5,9 @@ require('dotenv').config()
 
 const port = process.env.PORT || 1000;
 const api = express();
-api.listen(port, () => console.log("Listening at this port"));
+const listener = api.listen(port, () => {
+    console.log('Your app is listening on port ' + listener.address().port || port);
+  });
 api.use(express.static('web'));
 api.use(express.json({limit: '2mb'}))
 
